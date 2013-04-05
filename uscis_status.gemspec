@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["guillermo@gguerini.com"]
   spec.description   = "USCIS Status Checker"
   spec.summary       = "Easy way to check multiple application statuses from USCIS website."
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/gguerini/uscis_status"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
