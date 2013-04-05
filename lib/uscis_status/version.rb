@@ -1,3 +1,3 @@
-module UscisStatus
+module USCISStatus
   VERSION = "0.0.1"
 end

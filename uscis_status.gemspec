@@ -5,7 +5,7 @@ require 'uscis_status/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "uscis_status"
-  spec.version       = UscisStatus::VERSION
+  spec.version       = USCISStatus::VERSION
   spec.authors       = ["Guillermo Guerini"]
   spec.email         = ["guillermo@gguerini.com"]
   spec.description   = "USCIS Status Checker"
