@@ -1,4 +1,4 @@
-require "uscis_status/version"
+require 'uscis_status/version'
 require 'mechanize'
 require 'nokogiri'
 
@@ -11,18 +11,18 @@ module USCISStatus
       # Check if the parameter is an Array, otherwise create one
       applications = application_numbers.kind_of?(Array) ? application_numbers : application_numbers.split
 
-      a = Mechanize.new
       statuses = []
 
       applications.each do |number|
         next if number.nil? or number.empty?
 
-        page = a.post("https://egov.uscis.gov/cris/Dashboard/CaseStatus.do", { "appReceiptNum" => number })
+        mechanize = Mechanize.new{|a| a.ssl_version, a.verify_mode = 'SSLv3', OpenSSL::SSL::VERIFY_NONE}
+        page = mechanize.post("https://egov.uscis.gov/cris/Dashboard/CaseStatus.do", { "appReceiptNum" => number })
 
         # Look for possible errors with this application number
         error = page.search('div.errorContainer > ul')
         if !error.empty?
-          statuses << {number: number, type: '', status: error.text.strip, description: '', general_description: ''}
+          statuses << {number: number, type: 'NONE', status: error.text.strip, description: '', general_description: ''}
           next
         end
 
