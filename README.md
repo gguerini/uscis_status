@@ -1,6 +1,6 @@
-# USCIS Status Checker
+# USCIS Status Checker Gem
 
-Easy way to check multiple application statuses from USCIS website.
+This gem makes it easy to check multiple application statuses from USCIS website, without visiting the USCIS website.
 
 ## Important
 
@@ -9,7 +9,7 @@ It's just a scraper of the USCIS website and it may break at any time if the web
 
 ## Live Example
 
-Take a look at the website 'Multiple USCIS Status Checker' that uses this gem:
+Take a look at the 'Multiple USCIS Status Checker' website that uses this gem:
 
 [http://uscisstatus.herokuapp.com](http://uscisstatus.herokuapp.com)
 
