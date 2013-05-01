@@ -7,6 +7,11 @@ Easy way to check multiple application statuses from USCIS website.
 This is not the official way to check the status of a USCIS application and it's not endorsed by USCIS either.
 It's just a scraper of the USCIS website and it may break at any time if the website is updated. If it should happen, feel free to report me or to [fix](#contributing) the problem.
 
+## Live Example
+
+Take a look at the website 'Multiple USCIS Status Checker' that uses this gem:
+
+[http://uscisstatus.herokuapp.com](http://uscisstatus.herokuapp.com)
 
 ## Installation
 
