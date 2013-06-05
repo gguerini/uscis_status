@@ -7,6 +7,10 @@ This gem makes it easy to check multiple application statuses from USCIS website
 This is not the official way to check the status of a USCIS application and it's not endorsed by USCIS either.
 It's just a scraper of the USCIS website and it may break at any time if the website is updated. If it should happen, feel free to report me or to [fix](#contributing) the problem.
 
+## New on version 0.3.0
+
+Now it checks if the Application is in the last status (step). If it's in the last status, the Application is complete.
+
 ## Live Example
 
 Take a look at the 'Multiple USCIS Status Checker' website that uses this gem:
@@ -47,7 +51,8 @@ Or install it yourself as:
                      :type => "Form I485, Application To Register Permanent Residence Or To Adjust Status",
                    :status => "Acceptance",
               :description => "On March 20, 2013, your fingerprint fee was accepted and we have mailed...",
-      :general_description => "During the acceptance step USCIS reviews newly received applications and..."
+      :general_description => "During the acceptance step USCIS reviews newly received applications and...",
+                 :complete => "false"
     }
 
 

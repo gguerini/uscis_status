@@ -22,7 +22,7 @@ module USCISStatus
         # Look for possible errors with this application number
         error = page.search('.//div[@class="errorContainer"]/ul')
         if !error.empty?
-          statuses << {number: number, type: 'NONE', status: error.text.strip, description: '', general_description: ''}
+          statuses << {number: number, type: 'NONE', status: error.text.strip, description: '', general_description: '', complete: ''}
           next
         end
 
@@ -31,6 +31,10 @@ module USCISStatus
 
         # Get current application block
         current_application = page.search('.//div[@class="caseStatusInfo"]')
+
+        # Verify if it's in the final step a.k.a 'Complete'
+        steps = page.search('.//table[@id="buckets"]/tr/td')
+        complete = steps[steps.count - 1]["class"] == "current" ? "true" : "false"
 
         # Get the Status
         status = current_application.search('.//h4').text.strip
@@ -41,7 +45,7 @@ module USCISStatus
         # Get the General Description for the Application
         general_description = current_application.search('.//div[@id="bucketDesc"]').text.strip
 
-        statuses << {number: number, type: application_type, status: status, description: description, general_description: general_description}
+        statuses << {number: number, type: application_type, status: status, description: description, general_description: general_description, complete: complete}
 
       end
 
