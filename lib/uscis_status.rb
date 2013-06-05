@@ -20,26 +20,26 @@ module USCISStatus
         page = mechanize.post("https://egov.uscis.gov/cris/Dashboard/CaseStatus.do", { "appReceiptNum" => number })
 
         # Look for possible errors with this application number
-        error = page.search('div.errorContainer > ul')
+        error = page.search('.//div[@class="errorContainer"]/ul')
         if !error.empty?
           statuses << {number: number, type: 'NONE', status: error.text.strip, description: '', general_description: ''}
           next
         end
 
         # Get the application type and description (eg. Form I130...)
-        application_type = capitalize_words(page.search('div#caseStatus>h3').text.gsub(CURRENT_CASE, ""))
+        application_type = capitalize_words(page.search('.//div[@id="caseStatus"]/h3').text.gsub(CURRENT_CASE, ""))
 
         # Get current application block
-        current_application = page.search('div.caseStatusInfo')
+        current_application = page.search('.//div[@class="caseStatusInfo"]')
 
         # Get the Status
-        status = current_application.search('h4').text.strip
+        status = current_application.search('.//h4').text.strip
 
         # Get the Description
-        description = current_application.search('.caseStatus').text.strip
+        description = current_application.search('.//p[@class="caseStatus"]').text.strip
 
         # Get the General Description for the Application
-        general_description = current_application.search('#bucketDesc').text.strip
+        general_description = current_application.search('.//div[@id="bucketDesc"]').text.strip
 
         statuses << {number: number, type: application_type, status: status, description: description, general_description: general_description}
 
